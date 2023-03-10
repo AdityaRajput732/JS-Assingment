@@ -1,0 +1,15 @@
+HTML
+<div style='margin-left: 10%;'>
+    <h3>Add Two Numbers</h3>
+    <input id="num1" type="number"><br><br>
+    <input id="num2" type="number"><br><br>
+    <button id="mybtn" onclick="adding()" type="submit">ADD</button><br><br>
+    <input id="result" type="number" disabled>
+</div>
+JS
+function adding() {
+    const a = parseFloat(document.getElementById("num1").value);
+    const b = parseFloat(document.getElementById("num2").value);
+    const c = a+b;
+    document.getElementById("result").value = c;
+}

@@ -1,0 +1,28 @@
+HTML
+<input id="todo-input">
+<button id="add-todo" >Add todo</button>
+<ul id="todo-holder">
+ </ul>
+JS
+
+// javascript code goes here
+let add_todo = document.getElementById('add-todo');
+const data = JSON.parse(localStorage.getItem('todos')||'[]');
+add_todo.addEventListener('click', function(){
+    const el = document.getElementById('todo-input');
+    const text = el.value;
+    data.push(text);
+    const main = document.getElementById('todo-holder');
+    localStorage.setItem('todos', JSON.stringify(data));
+    main.innerHTML += `<li class="todo-item">${text}</li>`
+    el.value = '';
+})
+function rendertodo(data) {
+    const main = document.getElementById('todo-holder');
+    data.forEach(
+        todo => {
+            main.innerHTML += `<li class="todo-item">${todo}</li>`
+        }
+    );
+}
+rendertodo(data);

@@ -1,0 +1,63 @@
+HTML
+<!-- Do not edit this you need to use JS to scrap prices and display their sum -->
+    <h1>Grocery List</h1>
+    <table >
+        <thead>
+            <tr>
+                <th>Sr. No.</th>
+                <th>Title</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Item-1</td>
+                <td data-ns-test="price">100</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Item-2</td>
+                <td data-ns-test="price">200</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Item-3</td>
+                <td data-ns-test="price">2</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Item-4</td>
+                <td data-ns-test="price" >1</td>
+            </tr>
+            
+            
+        </tbody>
+    </table>
+    <button onClick='calcTotal()'>Total</button>
+JS
+function calcTotal() {
+    const gt_row = document.getElementById("grand_total_row");
+    if (gt_row) {
+        gt_row.remove();
+    }
+
+    const new_gt_row = document.createElement("tr");
+    new_gt_row.id = "grand_total_row";
+    const td1 = document.createElement('td');
+    const td2 = document.createElement('td');
+    td1.innerHTML = "Grand Total";
+    td2.setAttribute("data-ns-test", "grandTotal");
+
+    const price_cells = document.querySelectorAll('td[data-ns-test="price"]');
+    let total = 0;
+    for(let i = 0; i < price_cells.length; i++) {
+        total += parseInt(price_cells[i].innerHTML);
+    } 
+    td2.innerHTML = total;
+
+    new_gt_row.appendChild(td1);
+    new_gt_row.appendChild(td2);
+    const table = document.querySelector("tbody");
+    table.appendChild(new_gt_row);
+}

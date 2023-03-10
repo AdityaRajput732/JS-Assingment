@@ -1,0 +1,32 @@
+HTML
+<!-- html code goes here -->
+<h3 id="url">https://localhost:8080/</h3>
+
+<form>
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name">
+    <br><br>
+    <label for="year">Graduation year:</label><br>
+    <input id="year" name="year" type="number">
+    <br><br>
+    <button id="button">Submit</button>
+</form>
+Js
+
+// javascript code goes here
+document.querySelector('#button').addEventListener('click', function (event) {
+    event.preventDefault();
+    let nameElement = document.getElementById('name').value;
+    let yearElement = document.getElementById('year').value;
+    let eLE = document.getElementById('url');
+    // let cute=ele.innerText;
+    if (nameElement !== "" && yearElement == "") {
+        eLE.innerText =`https://localhost:8080/?name=${nameElement}`;
+    }
+    else if (yearElement != "" && nameElement ==="") {  
+        eLE.innerText = `https://localhost:8080/?year=${yearElement}`;
+    }
+    else if (yearElement !="" && nameElement !== "") {
+        eLE.innerText = `https://localhost:8080/?name=${nameElement}&year=${yearElement}`;
+    }
+});

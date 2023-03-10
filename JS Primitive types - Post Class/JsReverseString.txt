@@ -1,0 +1,4 @@
+// Complete the reverseString function 
+function reverseString(n) {
+  return n.split('').reverse().join('')
+}

@@ -1,0 +1,42 @@
+HTML
+<form onsubmit="">
+        <label>Enter Div id</label>
+        <input id="div-id-input" type="text">
+        <br />
+        <label>Enter div text content</label>
+        <input id="div-content-input" type="text">
+        <br />
+        <label>Enter div height in px</label>
+        <input id="div-height-input" type="number" value="50">
+        <br />
+        <label>Enter div width in px</label>
+        <input id="div-width-input" type="number" value="50">
+        <br />
+        <button id="create-div-btn">Add Div</button>
+    </form>
+<br>
+    <main id="div-holder"></main>
+CSS
+.my-div{
+            background-color: red;
+        }
+JS
+// javascript code goes here
+const id = document.querySelector("#div-id-input");
+const content = document.querySelector("#div-content-input");
+const height =document.querySelector("#div-height-input");
+const width = document.querySelector("#div-width-input");
+const btn = document.querySelector("#create-div-btn");
+
+const holder = document.querySelector("#div-holder");
+btn.addEventListener("click",function(e){
+e.preventDefault();
+
+let gl = document.createElement("div");
+gl.className="my-div";
+gl.style.width = width.value+"px";
+gl.style.height = height.value+"px"; 
+gl.innerText = content.value;
+gl.id = id.value;
+holder.appendChild(gl);
+})

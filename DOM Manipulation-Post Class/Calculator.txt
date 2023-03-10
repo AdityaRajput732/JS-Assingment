@@ -1,0 +1,153 @@
+HTML
+<!-- HTML here -->
+<div class="container">
+    <div id="saved">
+        <span id="prev_num">0</span>
+        <span id="selected_op"></span>
+    </div>
+    <input type="text" id="input" value="0">
+    <div id="btn_board">
+        <div id="num_btns">
+            <button id="dot" onclick="appendAns('.')()" class="num_btn">.</button>
+        </div>
+        <div id="ops_btns">
+            <button id="clr" onclick="clearCal()">C</button>
+            <button id="plus" class="op">+</button>
+            <button id="minus" class="op">-</button>
+            <button id="multiply" class="op">x</button>
+            <button id="divide" class="op">/</button>
+            <button id="ans" onclick="printAnswer()">=</button>
+        </div>
+    </div>
+</div>
+CSS
+/* css code goes here */
+.container {
+    border: solid black 1px;
+    padding: 5px;
+    max-width: 210px;
+    background-color: black;
+    color: white;
+    box-sizing: content-box;
+}
+
+#saved {
+    font-size: smaller;
+    text-align: right;
+    box-sizing: border-box;
+    margin: 2px;
+}
+
+#input {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: right;
+    height: 2em;
+    margin: 2px;
+    background-color: silver;
+    font-size: large;
+}
+
+#num_btns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+    width: 75%;
+}
+
+.num_btn {
+    flex: 1;
+    flex-basis: 30%;
+    padding: 2px;
+    margin: 2px;
+}
+
+#block0 {
+    flex: 2;
+    flex-basis: 100px;
+    order: -1;
+}
+
+#btn_board {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+
+#ops_btns {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+
+#ops_btns button {
+    margin: 2px;
+    width: 100%;
+}
+JS
+// javascript code goes here
+const input_element = document.getElementById('input');
+const num_div = document.getElementById('num_btns');
+const prev_number = document.getElementById('prev_num');
+const selected_op = document.getElementById('selected_op');
+
+function clearCal() {
+    prev_number.innerHTML = "0";
+    input_element.value = "0";
+    selected_op.innerHTML = "";
+}
+
+const appendAns = (val) => () => {
+        let existing = input_element.value;
+        if (existing == "0"){
+            existing = "";
+        }
+        if(existing.includes(".") && (val == ".")) {
+            return;
+        }
+        existing += val;
+        input_element.value = existing;
+    }
+
+for (let i = 0; i < 10; i ++) {
+    const num_button = document.createElement('button');
+    num_button.id = `block${i}`;
+    num_button.className = "num_btn"
+    num_button.innerHTML = i;
+    num_button.addEventListener('click', appendAns(i));
+    num_div.appendChild(num_button);
+}
+
+const all_op_elements = document.getElementsByClassName("op");
+for (const op_el of all_op_elements) {
+    op_el.addEventListener('click', () => {
+        const prev_answer = calculateAnswer();
+        prev_number.innerHTML = prev_answer;
+        input_element.value = "0";
+        selected_op.innerHTML = op_el.innerHTML;
+    })
+}
+
+const calculateAnswer = () => {
+    switch (selected_op.innerHTML) {
+        case "":
+            return input_element.value;
+        case "+":
+            return parseFloat(prev_number.innerHTML) + parseFloat(input_element.value);
+        case "-":
+            return parseFloat(prev_number.innerHTML) - parseFloat(input_element.value);
+        case "x":
+            return parseFloat(prev_number.innerHTML) * parseFloat(input_element.value);
+        case "/":
+            return parseFloat(prev_number.innerHTML) / parseFloat(input_element.value);
+        default:
+            console.error("Something went wrong");
+            throw ValueError("Unidentified Operation");
+    }
+}
+
+function printAnswer() {
+    input_element.value = calculateAnswer();
+    prev_number.innerHTML = "0";
+    selected_op.innerHTML = "";
+}

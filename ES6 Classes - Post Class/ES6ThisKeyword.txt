@@ -1,0 +1,19 @@
+class FooBar {
+
+constructor(foo, bar) {
+
+this.foo = foo;
+
+this.bar = bar;
+
+}
+
+}
+
+function solve(obj, gfoo, gbar) {
+
+const g = func.bind(obj);
+
+return obj.foo + obj.bar + g(gfoo, gbar);
+
+}

@@ -1,0 +1,57 @@
+HTML
+<table>        
+        <tr>
+            <td>1</td>
+            <td>Item-2</td>
+            <td data-ns-test="price" class="item">18361</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Item-2</td>
+            <td data-ns-test="price" class="item">18361</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Item-3</td>
+            <td data-ns-test="price" class="item">17373</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Item-4</td>
+            <td data-ns-test="price" class="item">17361</td>
+        </tr>
+    </table>
+JS
+
+let sum = 0;
+
+const total_elements = document.querySelectorAll(".item");
+total_elements.forEach(function(element) {
+    sum += Number(element.innerText);
+});
+
+ let table = document.querySelector('table');
+ let row = document.createElement('tr');
+ table.appendChild(row);
+ let data = document.createElement('td');
+ row.appendChild(data); 
+ data.setAttribute('data-ns-test', 'grandTotal'); 
+
+
+data.innerText = sum;
+// const item1 = document.getElementById("item-1")
+// const item2 = document.getElementById("item-2")
+// const item3 = document.getElementById("item-3")
+// const item4 = document.getElementById("item-4")
+
+
+// const table = document.getElementsByTagName("table");
+// let arr = [];
+// let arr = new Array();
+
+// let a = Number(item1.innerText);
+// let b = Number(item2.innerText);
+// let c = Number(item3.innerText);
+// let d = Number(item4.innerText);
+
+// let sum = a + b + c + d;

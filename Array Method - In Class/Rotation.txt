@@ -1,0 +1,27 @@
+HTML
+
+<div id="box" ></div>
+CSS
+#box {
+    width: 100px;
+    height: 100px;
+    background: red;
+    transition: transform 2s;
+}
+JS
+// javascript code goes here
+const box = document.getElementById("box");
+box.setAttribute('config', 'true');
+box.addEventListener('mouseover', function(event) {
+    const config = box.getAttribute('config');
+    if (config == 'true') {
+        // rotate clockwise
+        box.style.transform = 'rotate(180deg)';
+        box.setAttribute('config', 'false');
+    }
+    else {
+        // rotate anticlockwise
+        box.style.transform = 'rotate(0deg)';
+        box.setAttribute('config', 'true');
+    }
+})

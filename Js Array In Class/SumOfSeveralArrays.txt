@@ -1,0 +1,16 @@
+function sum_array(arr) {
+// write code here
+// [[3, 2], [1], [4, 12]]
+let sum_a = 0;
+for(let i=0;i<arr.length; i++){
+  sum_a += sum(arr[i]);
+}
+console.log(sum_a);
+// use console.log for displaying the output
+}
+function sum(arr){
+    let sum_arr = 0;
+    for(let i=0; i<arr.length;i++){
+        sum_arr += arr[i];
+    } return sum_arr;
+}

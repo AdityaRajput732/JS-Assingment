@@ -1,0 +1,72 @@
+HTML
+<!-- html code goes here -->
+<body>
+    <div class="posting">
+    <span>Page Number</span>
+    <span id="num">1</span>
+    
+    <main class="container">
+        <!-- <ol id="issuePage">
+            <li id="issue1"></li>
+            <li id="issue2"></li>
+            <li id="issue3"></li>
+            <li id="issue4"></li>
+            <li id="issue5"></li>
+        </ol> -->
+</main>
+    </div>
+<button  id="load_prev">Previous</button>
+<button  id="load_next">Next</button>
+</body>
+JS
+
+'use strict';
+let container = document.querySelector('.container');
+let firsInfo = function(deta ){
+    const html = `
+    <article class="this_issue">
+     <ol id="issuePage">
+            <li id="issue1">${deta[0].title}</li>
+            <li id="issue2">${deta[1].title}</li>
+            <li id="issue3">${deta[2].title}</li>
+            <li id="issue4">${deta[3].title}</li>
+            <li id="issue5">${deta[4].title}</li>
+        </ol>
+        </article>
+    `;
+    // console.log(html);
+  container.insertAdjacentHTML('beforeend', html);
+};
+
+let githubIssue =function(pageNumberHere){ 
+fetch(`https://api.github.com/repositories/1296269/issues?page=${pageNumberHere}&per_page=5`)
+.then(response => response.json())
+.then(data => firsInfo(data));
+};
+let x =2;
+githubIssue(x);
+
+let next = document.getElementById('load_next');
+let prev = document.getElementById('load_prev');
+let num = document.getElementById('num');
+
+next.addEventListener('click', function(){
+    let cur = num.innerHTML;
+    if(cur<5){
+    num.innerHTML++;
+    container.innerHTML = '';
+    x = x+1;
+    githubIssue(x);
+
+    }
+});
+prev.addEventListener('click', function(){
+    let cur = num.innerHTML;
+    if(cur>1){
+        num.innerHTML = --cur;
+        container.innerHTML = '';
+       x--;
+       githubIssue(x);
+
+    }
+});

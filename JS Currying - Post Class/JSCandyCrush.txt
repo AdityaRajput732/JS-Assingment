@@ -1,0 +1,10 @@
+// n is the number (number of candies) as  provided in input
+  // n is the number (number of candies) as  provided in input
+    function findCost(n) {
+        // write code here
+        // do not console.log the answer
+        // return answer as a number
+    if (n == 0) return 0;
+   let g = Math.floor((n - 1) / 3 )+ 1;
+    return g*g + findCost(n - g);
+    }

@@ -1,0 +1,11 @@
+let sayHiMixin = {
+	// write your code here
+	say() {
+		return sayMixin.say(this.name);
+	}
+};
+
+function setPrototype() {
+	// some code here
+	Object.assign(User.prototype, sayHiMixin);
+}

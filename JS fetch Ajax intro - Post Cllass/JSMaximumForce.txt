@@ -1,0 +1,15 @@
+// arr is unsorted array of powers
+    // n is the number of elements in the array
+    // k is required number of elements
+    function maxPower(arr, n,k) {
+        // write code here
+        // do not console.log the answer
+        // return the answer
+        arr.sort((a,b)=> Math.abs(b) - Math.abs(a))
+        // arr.reverse();
+        let sum =0;
+        for(let i=0; i<k; i++){
+          sum += arr[i]*arr[i];
+        }
+           return sum;
+      }

@@ -1,0 +1,14 @@
+function calculate(operation) {
+    //  write your code here 
+      function add(x, y){
+            console.log(x+y);
+      }
+      function subtract(x, y){
+            console.log(x-y);
+      }
+         if(operation==='ADD'){
+               return add;
+         }else if(operation==='SUBTRACT'){
+              return subtract;
+         }
+     }

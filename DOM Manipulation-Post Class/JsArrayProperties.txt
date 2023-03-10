@@ -1,0 +1,81 @@
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Methods</title>
+    <style>
+        .d-none{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h3>JS Array Properties</h3>
+    <div>
+        <label for="input">Array</label>
+        <input type="text" id="input">
+        <button id="add">Add</button>
+    </div>
+    <div style="margin: 10px 0;">
+        <button id="join">Join</button>
+        <button id="even">Filter Even</button>
+        <button id="odd">Filter Odd</button>
+    </div>
+    <p id="display"></p>
+    <p id="error">Wrong Input!!</p>
+    <script src="./script.js"></script>
+</body>
+</html>
+
+JS
+const input = document.getElementById('input');
+const addBtn = document.getElementById('add');
+const display = document.getElementById('display');
+const even = document.getElementById('even');
+const odd = document.getElementById('odd');
+const join = document.getElementById('join');
+
+const inputArray = [];
+const evarr=[];
+const oddarr=[];
+var str="";
+
+addBtn.addEventListener('click', () => {
+var flag=1;
+const arr=input.value.split(",");
+for(let i=0;i<arr.length;i++){
+if(!isNaN(arr[i])){
+inputArray.push(arr[i]);
+str += arr[i];
+if((Number)(arr[i])%2==0){
+evarr.push(arr[i]);
+}else{
+oddarr.push(arr[i]);
+}
+}else{
+flag=0;
+break;
+}
+}
+if(flag===1){
+display.innerHTML=`[${inputArray}]`;
+}else{
+const err=document.querySelector("#error");
+err.style.display="block";
+}
+})
+
+even.addEventListener('click', () => {
+display.innerHTML=`[${evarr}]`;
+})
+
+odd.addEventListener('click', () => {
+display.innerHTML=`[${oddarr}]`;
+})
+
+join.addEventListener('click', () => {
+display.innerHTML=`${str}`;
+})

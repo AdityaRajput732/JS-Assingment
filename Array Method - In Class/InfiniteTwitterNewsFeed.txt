@@ -1,0 +1,26 @@
+HTML
+<!-- html code goes here -->
+<style>
+    div {
+        height: 500px;
+        /* width: 100px; */
+        border: 2px solid brown;
+        background-color: yellow;
+        margin: 10px;
+    }
+</style>
+<body>
+    <div></div>
+</body>
+JS
+// javascript code goes here
+const body = document.getElementsByTagName("body")[0];
+function addNDivs(n) {
+    for(let i = 1; i < n; i++) {
+        const new_div = document.createElement("div");
+        body.appendChild(new_div);
+        new_div.innerHTML = i+1;
+    }
+}
+addNDivs(100);
+// body.addEventListener('scrollend', () => {addNDivs(50)});

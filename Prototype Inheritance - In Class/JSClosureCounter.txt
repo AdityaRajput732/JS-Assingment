@@ -1,0 +1,8 @@
+function countBy(initial){
+  this.value = initial;
+  return (num) => {
+      this.value += num;
+      return this.value
+  }  
+ 
+}

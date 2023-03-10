@@ -1,0 +1,29 @@
+// You need to print the matrix Anticlock wise
+// mat: contains the input matrix
+function printAntiClockWise(mat)
+{
+        let ans = "";
+        let n = mat.length;
+       let top = 0;
+       let right = n-1;
+       let bottom = n-1;
+       let left = 0;
+
+       while(right>=left){
+               for(let i = top; i<=bottom; i++ ){
+               ans += mat[i][left] + " ";}
+                left++;
+               for(let i = left; i<=right; i++ ){
+               ans += mat[bottom][i] + " ";}
+               bottom--;
+
+               for(let i = bottom; i>=top; i-- ){
+               ans += mat[i][right] + " ";}
+               right--;
+
+               for(let i = right; i>=left; i-- ){
+               ans += mat[top][i] + " ";}
+               top++;
+       }
+   console.log(ans);
+ }

@@ -1,0 +1,10 @@
+function getNumbersGreaterThan5(nums) {
+    // write code here
+    // return the output , do not use console.log here
+    const result = nums.filter(greater5);
+    return result;
+}
+
+function greater5(num){
+    return num>5;
+}

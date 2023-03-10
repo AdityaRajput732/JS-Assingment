@@ -1,0 +1,16 @@
+function greetHindi(person) {
+    console.log(`Namaste ${person}!`)
+}
+function greetEnglish(person) {
+    //write your code here
+    console.log(`Hello ${person}!`)
+}
+function greetFrench(person) {
+     //write your code here
+    console.log(`Bonjour ${person}!`)
+}
+function Greetings(person) {
+    greetHindi(person)
+    greetEnglish(person)
+    greetFrench(person)
+}

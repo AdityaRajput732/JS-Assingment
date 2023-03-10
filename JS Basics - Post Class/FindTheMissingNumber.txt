@@ -1,0 +1,13 @@
+function findMissingNumber(arrayOfIntegers, upperBound, lowerBound) {
+// write code here
+// use console.log for output
+// let u = upperBound;
+// let l = lowerBound;
+let sum = ((upperBound*(upperBound+1))/2) - ((lowerBound*(lowerBound-1))/2);
+let currSum = 0;
+
+// let sum = (u*(u+1)/2)-((l-1)*(l/2);
+for(let i=0; i<arrayOfIntegers.length; i++){
+    currSum += arrayOfIntegers[i];
+} console.log(sum - currSum);
+}

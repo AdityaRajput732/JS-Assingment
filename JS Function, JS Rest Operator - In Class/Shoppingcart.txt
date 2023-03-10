@@ -1,0 +1,66 @@
+HTML
+<h1>Grocery List</h1>
+
+<!--input fields -->
+<label for="item-name-input">Title</label>
+<input type="text" id="item-name-input" name="title" required>
+<label for="item-price-input">Price</label>
+<input type="number" id="item-price-input" name="price">
+<button onclick="insertItem()">Add</button>
+
+<table>
+        <tr>
+             <th>Sr. No.</th>
+            <th>Title</th>
+            <th>Price</th>
+        </tr>
+</table>
+
+<span data-ns-test="grandTotal" id="grandTotal">0</span>
+
+
+<style>
+        table, th, td {
+                border: solid black 1px;
+        }
+</style>
+JS
+function insertItem() {
+    const total_rows = document.getElementsByTagName('tr').length;
+    const tr_element = document.createElement('tr');
+
+    // Sr no
+    const sr_no = document.createElement('td');
+    sr_no.appendChild(document.createTextNode(total_rows));
+    tr_element.appendChild(sr_no);
+
+    // Title
+    const title_input = document.getElementById('item-name-input');
+    const title = document.createElement('td');
+    if (!title_input.value) {
+        return;
+    }
+    title.appendChild(document.createTextNode(title_input.value));
+    title.setAttribute('data-ns-test', "item-name");
+    tr_element.appendChild(title);
+
+    // Price
+    const price_input = document.getElementById('item-price-input');
+    const price_element = document.createElement('td');
+    if (!price_input.value) {
+        return;
+    }
+    price_element.appendChild(document.createTextNode(price_input.value));
+    price_element.setAttribute('data-ns-test', "item-price");
+    tr_element.appendChild(price_element);
+
+    const table_element = document.getElementsByTagName("table")[0];
+    table_element.appendChild(tr_element);
+
+    const grandTotal_element = document.getElementById("grandTotal");
+    let total = parseFloat(grandTotal_element.innerHTML);
+    grandTotal_element.innerHTML = total + parseFloat(price_input.value);
+
+    title_input.value = "";
+    price_input.value = null;
+}

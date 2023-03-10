@@ -1,0 +1,54 @@
+HTML
+<h3 id="counter">0</h3>
+<button id="increment" >Like</button>
+<button id="decrement" >Dislike</button>
+JS
+
+let count = document.getElementById("counter");
+let like = document.getElementById("increment");
+let dislike = document.getElementById("decrement");
+
+count.innerHTML = 0;
+like.addEventListener('click', function(){
+    count.innerHTML++;
+});
+dislike.addEventListener('click', function(){
+    let curr = count.innerHTML;
+    if(curr>0){
+        count.innerHTML = --curr;
+    }
+});
+
+
+
+
+// const element = document.getElementById("increment");
+// element.addEventListener("click", myFunction);
+// function x(){
+//    count++;
+// }
+// if(count>=0){
+// function likebtn(){
+//     count = count+1;
+// }
+// }
+//  if(likebtn()){
+//     function likebtn(){
+//     document.getElementById("counter").innerHTML = count-1;
+// }
+// } else if(dislikebtn()){
+// function dislikebtn(){
+//     document.getElementById("counter").innerHTML = count+1;
+// }
+// }
+
+
+
+// const likebtn = document.getElementById('increment');
+// let x = function(){
+//     count.innerText = 5;
+// }
+// likebtn.addEventListener('click', x);
+// function myFunction() {
+//   document.getElementById("counter").innerHTML = count+1;
+// }

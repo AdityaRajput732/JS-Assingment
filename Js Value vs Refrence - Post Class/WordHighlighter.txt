@@ -1,0 +1,58 @@
+HTML
+<label for="paragraph-input">Enter paragraph here</label>
+    <div id="paragraph-input" contenteditable="true">Enter text here</div>
+    <br />
+    <br />
+    <div>Total matches:- <span id="words-counter">0</span></div>
+    <br />
+    <label for="word-input">Enter word to be higlighted here</label>
+    <input type="text" id="word-input" >
+    <br />
+    <br />
+    <label for="ignore-case">Ignore case?</label>
+    <input type="checkbox" id="ignore-case" />
+CSS
+#paragraph-input {
+            border: 2px solid rgb(150, 0, 0);
+            width: 400px;
+            height: 300px;
+            padding: 8px 16px;
+            overflow: scroll;
+        }
+
+        .highlighted-txt {
+            color: rgb(0, 0, 0);
+            background-color: rgb(241, 255, 45);
+        }
+JS
+// javascript code goes here
+let inp = document.querySelector('#word-input')
+let checkbox = document.querySelector('#ignore-case')
+let para = document.querySelector('#paragraph-input')
+
+checkbox.addEventListener('change',myfuc)
+inp.addEventListener('input',myfuc)
+
+function myfuc(){
+    let count = 0
+    let inputval = inp.value
+
+    let paraText = para.innerText
+
+    let reg 
+    if(checkbox.checked){
+        reg = new RegExp(inputval, 'gi')
+    }
+    else{
+        reg = new RegExp(inputval, 'g')
+    }
+    paraText  = paraText.replaceAll(reg,(arg) => {
+        count++
+        return `<span class="highlighted-txt">${arg}</span>`
+    })
+
+    para.innerHTML = paraText
+
+    let wordcount = document.querySelector('#words-counter')
+    wordcount.innerText = count
+}

@@ -1,0 +1,8 @@
+let generateOrder = function(starting) {
+    let count = 0;
+    return function(){
+        count++;
+        return `Total orders = ${count}`;
+    }
+
+}
